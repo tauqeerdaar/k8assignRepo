@@ -9,9 +9,9 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    
+
     env:
-      TF_VAR_key_pair_name: ${{ secrets.KEY_PAIR_NAME }}
+      TF_VAR_key_pair: ${{ secrets.AWS_KEY_PAIR }}
 
     steps:
       - name: Checkout repository
