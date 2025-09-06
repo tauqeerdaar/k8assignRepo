@@ -30,5 +30,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  
 
+
       - name: Upload Plan to S3
         run: aws s3 cp plan.tfplan s3://k8assign/terraform-plans/plan-${{ github.sha }}.tfplan
