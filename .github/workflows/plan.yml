@@ -9,6 +9,9 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    
+    env:
+      TF_VAR_key_pair_name: ${{ secrets.KEY_PAIR_NAME }}
 
     steps:
       - name: Checkout repository
@@ -29,10 +32,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  
-          
-      - name: Terraform Plan
-        run: terraform plan -out=plan.tfplan -var="key_pair=${{ secrets.AWS_KEY_PAIR }}"
-
 
       - name: Upload Plan to S3
         run: aws s3 cp plan.tfplan s3://k8assign/terraform-plans/plan-${{ github.sha }}.tfplan
