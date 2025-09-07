@@ -2,9 +2,9 @@ name: Terraform Plan and Upload to S3
 
 on:
   workflow_dispatch:  # Manual trigger
-  push: #on pushing to main brach also
-    branches:
-      - main  
+  #push: #on pushing to main brach also
+  #  branches:
+  #    - main  
 
 jobs:
   terraform:
