@@ -11,6 +11,9 @@ jobs:
   destroy:
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_key_pair: ${{ secrets.AWS_KEY_PAIR }}
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
