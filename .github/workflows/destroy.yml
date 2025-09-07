@@ -30,6 +30,9 @@ jobs:
 
       - name: Download Plan from S3
         run: aws s3 cp s3://k8assign/terraform-plans/plan-${{ github.event.inputs.commit_sha }}.tfplan plan.tfplan
-
+      
+      - name: Terraform Init
+        run: terraform init
+      
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
